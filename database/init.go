@@ -35,5 +35,4 @@ func DbInstance() {
 	fmt.Println("database connected sucessfully")
 
 	DB = db
-
 }
