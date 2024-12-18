@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -17,7 +18,7 @@ var (
 func DbInstance() {
 
 	if err := godotenv.Load(".env"); err != nil {
-		log.Fatal("no .env file found")
+		log.Fatal("no .env file found", err)
 	}
 
 	dbUrl := os.Getenv("DATABASE_URL")
