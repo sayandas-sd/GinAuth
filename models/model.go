@@ -18,7 +18,7 @@ type User struct {
 	User_Type     string    `json:"user_type" validate:"required,eq=ADMIN|eq=USER"`
 	Refresh_Token string    `json:"refersh_token"`
 	Created_at    time.Time `json:"created_at" gorm:"autoCreateTime"`
-	Updated_at    time.Time `json:"updated_at" gorm:"autoCreateTime"`
+	Updated_at    time.Time `json:"updated_at" gorm:"autoUpdateTime"`
 	User_id       string    `json:"user_id" gorm:"unique"`
 }
 

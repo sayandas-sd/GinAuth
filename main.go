@@ -5,39 +5,37 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sayandas-sd/GinAuth/routes"
 )
 
 func main() {
-	
-		port := os.Getenv("PORT")
 
-		if port == "" {
-			port = "8080"
-		}
+	port := os.Getenv("PORT")
 
-		r := gin.Default()
+	if port == "" {
+		port = "8080"
+	}
 
-		routes.authRouter(r)
-		routes.userRouter(r)
+	r := gin.Default()
 
+	routes.authRouter(r)
+	routes.userRouter(r)
 
-		r.GET("/api-1", func(c *gin.Context) {
-			c.JSON(200, gin.H{
-				"message": "access granted for api-1",
-			})
+	r.GET("/api-1", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "access granted for api-1",
 		})
+	})
 
-		r.GET("/api-2", func(c *gin.Context) {
-			c.JSON(200, gin.H{
-				"message": "access granted for api-2",
-			})
+	r.GET("/api-2", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "access granted for api-2",
 		})
+	})
 
-		log.Printf("server is running on port %s...", port)
+	log.Printf("server is running on port %s...", port)
 
-		if err := r.Run(":" + port); err != nil {
-			log.Fatalf("failed to start server: %v", err)
-		}
-	
+	if err := r.Run(":" + port); err != nil {
+		log.Fatalf("failed to start server: %v", err)
+	}
+
 }

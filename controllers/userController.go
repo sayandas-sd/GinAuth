@@ -70,18 +70,15 @@ func SignUp() gin.HandlerFunc {
 	}
 }
 
-func Login() {
+func Login() gin.HandlerFunc {
 
-}
-
-func GetUsers() {
 
 }
 
 func GetUser() gin.HandlerFunc {
 	return func(c *gin.Context) {
 
-		id := c.Param("id")
+		id := c.Param("user_id")
 
 		if err := helper.MatchUserType(c, id); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{

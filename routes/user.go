@@ -6,8 +6,8 @@ import (
 	"github.com/sayandas-sd/GinAuth/middleware"
 )
 
-func userRoutes(r *gin.Engine) {
-	r.Use(middleware.Authenticate)
-	r.GET("/", controllers.GetUsers)
-	r.GET("/:user_id", controllers.GetUser)
+func userRoutes(incomingRoutes *gin.Engine) {
+	incomingRoutes.Use(middleware.Authenticate)
+	incomingRoutes.GET("/users", controllers.GetUsers)
+	incomingRoutes.GET("/users/:user_id", controllers.GetUser)
 }
